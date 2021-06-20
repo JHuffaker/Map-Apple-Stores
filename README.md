@@ -11,8 +11,8 @@ I created this file to learn about ArcGIS's features and how to create my own fe
 # Development Environment
 
 * ArcGIS
-*HTML
-*Visual Studio Code
+* HTML
+* Visual Studio Code
 * Microsoft Excel
 
 # Useful Websites
@@ -21,6 +21,6 @@ I created this file to learn about ArcGIS's features and how to create my own fe
 
 # Future Work
 
-* Include more stores
-* Filters which stores are displayed by state
+* Include more all store locations in the U.S., and then the world
+* Filter which stores are displayed by state (or country)
 * Use the Apple logo as a marker
