@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8" />
+      <meta
+        name="viewport"
+        content="initial-scale=1,maximum-scale=1,user-scalable=no"
+      />
+      <title>
+        Apple Store Locations in the U.S.
+      </title>
+  
+      <!-- Reference ArcGIS's CSS stylesheet -->
+      <link rel="stylesheet" href="https://js.arcgis.com/4.19//esri/themes/dark/main.css" />
+      <script src="https://js.arcgis.com/4.19//"></script>
+  
+      <style>
+        html,
+        body,
+        #viewDiv {
+          padding: 0;
+          margin: 0;
+          height: 100%;
+          width: 100%;
+          background-color: rgba(15, 15, 15, 1);
+        }
+      </style>
+  
+      <script>
+        require([
+          "esri/config",
+          "esri/Map",
+          "esri/views/MapView",
+          "esri/layers/FeatureLayer",
+          "esri/symbols/SimpleMarkerSymbol",
+          "esri/renderers/SimpleRenderer"
+        ],(
+          esriConfig,
+          Map,
+          MapView,
+          FeatureLayer,
+          SimpleMarkerSymbol,
+          SimpleRenderer
+        )=> {
+  
+          // Reference the API key
+          esriConfig.apiKey = "AAPKc473a3462f6441bc947231133de3c5c5zEE6Fmzv7Saic_pn4DwD1AxiDEaQZ1eJ2J3C4ecPEj2oDC-Sm3RjvTgSfg7j9YhW";
+  
+          // The styling for each location symbol
+          const renderer = new SimpleRenderer({
+            symbol: new SimpleMarkerSymbol({
+              size: 6,
+              color: [0, 255, 255],
+              outline: null
+            })
+          });
+
+          // Specifies which information will display when you click on
+          // on a store location
+          const popupStores = {
+            "title": "<b>{NAME}",
+            "content": "<b>Location:</b> {STREET}, {CITY}, {STATE}, {ZIP_CODE}"
+        }
+  
+          // Fetch information from ArcGIS
+          const appleStores = new FeatureLayer({
+            portalItem: {
+              id: "bc5660eae0f94a7ab7c0c20b9623bd31"
+            },
+            outFields: ["NAME","STREET","CITY","STATE","ZIP_CODE"],
+            popupTemplate: popupStores,
+            renderer: renderer
+          });
+  
+          // Add the layers to the map
+          const map = new Map({
+            basemap: "arcgis-dark-gray",
+            layers: [appleStores]
+          });
+  
+          // The map will automatically show the U.S.
+          const view = new MapView({
+            container: "viewDiv",
+            map: map,
+            zoom: 3,
+            center: [-95, 38],
+            constraints: {
+                snapToZoom:false
+            }
+          });
+        });
+      </script>
+    </head>
+  
+    <body>
+      <div id="viewDiv"></div>
+    </body>
+  </html>
