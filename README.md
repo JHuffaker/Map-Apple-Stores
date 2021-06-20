@@ -6,7 +6,7 @@ When the software is run, it pulls up a web page centered on the United States. 
 
 I created this file to learn about ArcGIS's features and how to create my own feature layer. Fortunately, ArcGIS provides CSS stylesheets for the map, so must of the hard work is already out of the way.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/m2ABw1-W5vU)
 
 # Development Environment
 
